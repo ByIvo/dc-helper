@@ -11,7 +11,6 @@
 
   beforeEach(function () {
     this.sandbox = sinon.sandbox.create();
-    console.log('oi');
   });
 
   afterEach(function () {
