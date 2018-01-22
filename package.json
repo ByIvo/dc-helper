@@ -1,8 +1,11 @@
 {
-  "name": "dc-helper",
+  "name": "dchelper",
   "version": "0.1.0",
   "description": "Datacoper CLI helper",
   "main": "src/dc-helper.js",
+  "bin": {
+    "dc-helper": "./src/dc-helper.js"
+  },
   "scripts": {
     "test": "mocha --require co-mocha src/helpers/**/**.spec.js"
   },
