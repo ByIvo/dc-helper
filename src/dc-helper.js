@@ -3,8 +3,9 @@
 
 var program = require('commander');
 var pkg = require('./../package.json');
+var winston = require('winston');
 
 program
   .version(pkg.version)
-  .command('migration <module>', 'Cria migration para o Módulo informado')
+  .command('migration <module>', 'Criar migration para o Módulo informado')
   .parse(process.argv);

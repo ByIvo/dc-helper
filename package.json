@@ -9,7 +9,8 @@
   "author": "@byivo",
   "license": "ISC",
   "dependencies": {
-    "commander": "^2.12.2"
+    "commander": "^2.12.2",
+    "winston": "^2.4.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",

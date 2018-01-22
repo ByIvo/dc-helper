@@ -3,18 +3,15 @@
 
 function MigrationHelper() {}
 
-module.exports = MigrationHelper;
-
 MigrationHelper.prototype.generateMigration = function (module, projectPath) {
-  var MigrationNameResolver = require('./migration-name-resolver.js');
-  var fs = require('fs');
+  var extractMigrationPaths = require('./path_resolver/extract-migration-paths.js');
+  var migrationNameResolver = require('./migration_resolver/migration-name-resolver.js');
+  // var migrationCreator = require('.migration-creator.js');
 
-  var migrationNameResolver = new MigrationNameResolver();
-  var filesToBeCreated = migrationNameResolver.resolve(module, projectPath);
-
-  var createFiles = function (url) {
-    fs.writeFileSync(url, '');
-  };
-
-  filesToBeCreated.forEach(createFiles);
+  var projectPaths = extractMigrationPaths(module, projectPath);
+  var migrationName = migrationNameResolver(projectPaths);
+  console.log(migrationName);
+  // migrationCreator.create(projectPaths, migrationName);
 };
+
+module.exports = MigrationHelper;
