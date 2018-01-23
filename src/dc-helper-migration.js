@@ -5,13 +5,13 @@ var program = require('commander');
 var MigrationHelper = require('./helpers/migration/migration-helper.js');
 
 program
-  .option('-p, --path <path>', 'Cooperate Project\'s Path')
+  .option('-p, --path [path]', 'Cooperate Project\'s Path')
   .parse(process.argv);
 
 var args = program.args;
 
 var module = args[0];
-var projectPath = program.path;
+var projectPath = program.path || process.cwd();
 
 if(!module) {
   throw Error("Nenhum módulo foi informado.");

@@ -2,7 +2,6 @@
 'use strict';
 
 module.exports = function (projectPaths, basicNameMigration) {
-  var path = require('path');
   var winston = require('winston');
   var fs = require('fs');
 

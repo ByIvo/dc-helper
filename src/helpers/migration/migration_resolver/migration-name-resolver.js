@@ -1,12 +1,21 @@
 #!/usr/bin/env node
 'use strict';
 
-module.exports = function (projectPaths) {
+module.exports = function (projectPaths, moduleName, callback) {
   var winston = require('winston');
   winston.log('info', 'Iniciando resolução do caminho final das migrations');
 
   var migrationNameFinder = require('./migration-name-finder.js');
-  var basicNameMigration = migrationNameFinder(projectPaths);
+
+  migrationNameFinder(projectPaths, moduleName, function (basicNameMigration) {
+    var migrationName = finishMigratioNameProccess(projectPaths, basicNameMigration);
+    callback(migrationName);
+  });
+
+};
+
+function finishMigratioNameProccess(projectPaths, basicNameMigration) {
+  var winston = require('winston');
   winston.log('info', 'Nome básico para a migration definido como "%s"', basicNameMigration);
 
   var existingMigrationCounter = require('./existing-migration-counter.js');
@@ -17,7 +26,7 @@ module.exports = function (projectPaths) {
   winston.log('info', 'O nome definitivo para a migration é "%s"', migrationName);
 
   return migrationName;
-};
+}
 
 function defineFinalMigrationName(basicNameMigration, qntExistingMigrations) {
   if(qntExistingMigrations === 0) {
