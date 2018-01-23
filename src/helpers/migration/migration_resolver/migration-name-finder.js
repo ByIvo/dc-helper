@@ -21,14 +21,25 @@ module.exports = function (projectPaths,moduleName, callback) {
     if(err) {
       throw Error(err);
     }
-    console.log(pomResponse);
-   var version = pomResponse.pomObject.project.version;
+
+   var version = resolverVersao(pomResponse);
    var preparedVersion = prepareVersion(version);
    var moduleNamePrepared = prepareName(moduleName);
 
    callback(moduleNamePrepared + '-' + preparedVersion);
   });
 };
+
+function resolverVersao(pomResponse) {
+    var project = pomResponse.pomObject.project;
+    var version = project.version || project.parent.version;
+    
+    if(!version) {
+      throw Error("Não foi possível resolver a versão no arquivo pom encontrado.");
+    }
+    
+    return version;
+}
 
 function prepareVersion(version) {
   var indexOfSnapshot = version.toUpperCase().indexOf('-SNAPSHOT');
