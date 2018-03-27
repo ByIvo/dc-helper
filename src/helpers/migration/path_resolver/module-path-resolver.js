@@ -24,8 +24,5 @@ module.exports = function (parentModulePath, moduleName) {
 };
 
 function prepareCommonModuleName(moduleName) {
-  var moduleNameReady = moduleName.toUpperCase().charAt(0) +
-    moduleName.toLowerCase().slice(1);
-
-  return moduleNameReady + 'Common';
+  return moduleName + 'Common';
 }

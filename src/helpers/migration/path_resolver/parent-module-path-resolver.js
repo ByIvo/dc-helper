@@ -24,8 +24,5 @@ module.exports = function (cooperatePath, moduleName) {
 };
 
 function prepareParentName(moduleName) {
-  var moduleNameReady = moduleName.toUpperCase().charAt(0) +
-    moduleName.toLowerCase().slice(1);
-
-  return moduleNameReady + '-Parent';
+  return moduleName + '-Parent';
 }
