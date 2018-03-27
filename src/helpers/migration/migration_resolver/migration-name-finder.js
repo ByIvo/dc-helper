@@ -24,7 +24,7 @@ module.exports = function (projectPaths,moduleName, callback) {
 
    var version = resolverVersao(pomResponse);
    var preparedVersion = prepareVersion(version);
-   var moduleNamePrepared = prepareName(moduleName);
+   var moduleNamePrepared = moduleName;
 
    callback(moduleNamePrepared + '-' + preparedVersion);
   });
@@ -33,20 +33,15 @@ module.exports = function (projectPaths,moduleName, callback) {
 function resolverVersao(pomResponse) {
     var project = pomResponse.pomObject.project;
     var version = project.version || project.parent.version;
-    
+
     if(!version) {
       throw Error("Não foi possível resolver a versão no arquivo pom encontrado.");
     }
-    
+
     return version;
 }
 
 function prepareVersion(version) {
   var indexOfSnapshot = version.toUpperCase().indexOf('-SNAPSHOT');
   return version.slice(0, indexOfSnapshot);
-}
-
-function prepareName(moduleName) {
-  return moduleName.toUpperCase().charAt(0) +
-    moduleName.toLowerCase().slice(1);
 }
