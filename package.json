@@ -1,7 +1,7 @@
 {
   "name": "dchelper",
   "version": "0.1.0",
-  "description": "Datacoper CLI helper",
+  "description": "CLI helper",
   "main": "src/dc-helper.js",
   "bin": {
     "dc-helper": "./src/dc-helper.js"
