@@ -1,0 +1,12 @@
+<div ng-controller="tabelaProdutoFornecedorController as tabelaProdutoFornecedorCtrl" ng-init="genericCrudConfig = tabelaProdutoFornecedorCtrl.genericCrudConfig">
+    <dc-generic-crud actions="CRUD"
+                     model="genericCrudConfig.model()"
+                     form-fields-config="genericCrudConfig.formFieldsConfig()"
+
+                     columns-config="genericCrudConfig.columnsConfig()"
+                     listing-data-fn="genericCrudConfig.listingDataFn()"
+                     listing-filter-options-list="genericCrudConfig.listingFilterOptionsList()"
+                     listing-filter-query-fn="genericCrudConfig.listingFilterQueryFn()"
+                     listing-delete-fn="genericCrudConfig.listingDeleteFn()"
+    ></dc-generic-crud>
+</div>
