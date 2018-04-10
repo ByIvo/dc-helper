@@ -1,0 +1,12 @@
+{
+  moduleName: faturamento
+  moduleAbrev: FAT
+  name: eG
+
+  #F
+  fullModule: cw.module.eG
+
+  lowercase module
+  urlify name: e-g
+  capitalized name: EG
+}
