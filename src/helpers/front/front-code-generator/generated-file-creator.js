@@ -10,6 +10,7 @@ module.exports = {
       var generatedCode = generatedCodes[i];
 
       var finalPath = path.join(context.projectPath, generatedCode.fileName);
+      console.log('writting in >> ' + finalPath);
       fs.writeFileSync(finalPath, generatedCode.fileContent, 'utf8');
     }
   }
