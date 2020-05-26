@@ -4,6 +4,9 @@
 function MigrationHelper() {}
 
 MigrationHelper.prototype.generateMigration = function (module, projectPath) {
+  
+  module = moduleAdjusted(module);
+  
   var extractMigrationPaths = require('./path_resolver/extract-migration-paths.js');
   var migrationNameResolver = require('./migration_resolver/migration-name-resolver.js');
   var migrationCreator = require('./migration_creator/migration-creator.js');
@@ -13,6 +16,9 @@ MigrationHelper.prototype.generateMigration = function (module, projectPath) {
     migrationCreator.create(projectPaths, migrationName);
   });
 
+  function moduleAdjusted(module) {
+    return new String(module).replace('-Parent', '');
+  }
 
 };
 

@@ -7,5 +7,5 @@ var winston = require('winston');
 
 program
   .version(pkg.version)
-  .command('migration <module>', 'Criar migration para o Módulo informado')
+  .command('migration <module>', 'Criar migration para o Módulo informado(deve estar no diretorno superior ao modulo)')
   .parse(process.argv);
