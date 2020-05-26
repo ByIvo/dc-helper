@@ -4,7 +4,9 @@
 module.exports = function (projectPaths, moduleName, callback) {
   var winston = require('winston');
   winston.log('info', 'Iniciando resolução do caminho final das migrations');
-
+  
+  moduleName = moduleNameAdjusted(moduleName);
+  
   var migrationNameFinder = require('./migration-name-finder.js');
 
   migrationNameFinder(projectPaths, moduleName, function (basicNameMigration) {
@@ -13,6 +15,10 @@ module.exports = function (projectPaths, moduleName, callback) {
   });
 
 };
+
+function moduleNameAdjusted(moduleName) {
+  return new String(moduleName).replace('-Parent', '');
+}
 
 function finishMigratioNameProccess(projectPaths, basicNameMigration) {
   var winston = require('winston');
