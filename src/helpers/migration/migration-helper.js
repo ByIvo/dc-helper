@@ -17,7 +17,7 @@ MigrationHelper.prototype.generateMigration = function (module, projectPath) {
   });
 
   function moduleAdjusted(module) {
-    return new String(module).replace('-Parent', '');
+    return new String(module).replace('-Parent/', '').replace('-Parent', '');
   }
 
 };
